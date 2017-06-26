@@ -3,7 +3,7 @@ import App from '../components/App';
 
 function mapStateToProps(state) {
     return {
-        ...state,
+        users: state.users,
     };
 }
 

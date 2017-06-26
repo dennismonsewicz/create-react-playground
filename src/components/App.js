@@ -10,13 +10,16 @@ const User = ({name, userId}) => {
 }
 
 class App extends Component {
-    onClick() {
+    handleClick = (e) => {
+        e.preventDefault();
         const { dispatch } = this.props;
         return dispatch(fetchUsersForTeam());
     }
 
     render() {
-        const users = Object.values(this.props.userData);
+        console.log(this.props);
+        const { userData } = this.props.users;
+        const users = Object.values(userData);
         return (
             <div className="App">
                 <div className="App-header">
@@ -24,7 +27,7 @@ class App extends Component {
                     <h2>Welcome to React</h2>
                 </div>
                 <p className="App-intro">
-                    <a href="#" onClick={() => this.onClick()}>Click</a> to load updated users
+                    <a href="#" onClick={this.handleClick}>Click</a> to load updated users
                 </p>
                 <div className="users">
                     {users.map(u => User(u))}
